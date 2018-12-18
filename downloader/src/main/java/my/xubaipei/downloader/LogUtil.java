@@ -5,7 +5,7 @@ package my.xubaipei.downloader;
  * create date： 2018-12-18
  */
 public class LogUtil {
-    static boolean PRINT_LOG = false;
+    static boolean PRINT_LOG = true;
     public static void log(String message){
         if (PRINT_LOG){
             return;

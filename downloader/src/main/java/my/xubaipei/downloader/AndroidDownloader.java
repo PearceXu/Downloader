@@ -1,5 +1,7 @@
 package my.xubaipei.downloader;
 
+import android.os.Handler;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,7 +26,7 @@ import static my.xubaipei.downloader.Message.MSG_TASK_SUCCESS;
  * Created by xubaipei on 2018/12/17.
  */
 
-public class Downloader {
+public class AndroidDownloader implements Handler.Callback{
     String mUrl;
     String mPath;
     MessageQueen mHandler;
@@ -35,8 +37,35 @@ public class Downloader {
     long mContentLenght = 0;
     long mAllTaskLenght = 0;
     int mChildSuccessTimes = 0;
+    Handler mAndroidHandler;
 
-    public Downloader(final String mUrl, final String path,int threadCount) {
+    @Override
+    public boolean handleMessage(android.os.Message message) {
+        switch (message.what) {
+            case MSG_TASK_PROGRESS:
+                int progress = message.arg1;
+                if (mCallBack != null){
+                    mCallBack.onProgress(progress);
+                }
+                break;
+            case MSG_TASK_SUCCESS:
+                if (mCallBack != null){
+                    mCallBack.onFinish(mPath);
+                }
+                break;
+            case MSG_TASK_ERROR:
+                Throwable e = (Throwable) message.obj;
+                if (mCallBack != null){
+                    mCallBack.onError(e);
+                }
+                break;
+        }
+
+        return false;
+    }
+
+    public AndroidDownloader(final String mUrl, final String path, int threadCount) {
+        mAndroidHandler = new Handler(this);
         mTaskCount = threadCount;
         this.mUrl = mUrl;
         this.mPath = getDestPath(mUrl,path);
@@ -84,18 +113,17 @@ public class Downloader {
                         }
                         break;
                     case MSG_TASK_ERROR:
-                        if (mCallBack != null){
-                            mCallBack.onError((Throwable) message.args[0]);
-                        }
+                        mAndroidHandler.sendMessage(android.os.Message.obtain(mAndroidHandler,
+                                MSG_TASK_PROGRESS,message.args[0]));
                         break;
                     case MSG_TASK_PROGRESS:
                         log("MSG_TASK_PROGRESS");
                         long increase = (long)message.args[0];
                         mAllTaskLenght += increase;
                         int progress = (int)(mAllTaskLenght * 100 /mContentLenght);
-                        if (mCallBack != null){
-                            mCallBack.onProgress(progress);
-                        }
+                        mAndroidHandler.sendMessage(android.os.Message.obtain(mAndroidHandler,
+                                MSG_TASK_PROGRESS,progress));
+
                         break;
                     case MSG_TASK_START:
                         log("--MSG_TASK_START");
@@ -166,9 +194,7 @@ public class Downloader {
                         break;
                     case MSG_TASK_SUCCESS:
                         log("file download success !!!");
-                        if (mCallBack != null){
-                            mCallBack.onFinish(mPath);
-                        }
+                        mAndroidHandler.sendEmptyMessage(MSG_TASK_SUCCESS);
                         break;
                 }
                 return super.handleMessage(message);
