@@ -36,9 +36,10 @@ public class Downloader {
     long mAllTaskLenght = 0;
     int mChildSuccessTimes = 0;
 
-    public Downloader(final String mUrl, final String path) {
+    public Downloader(final String mUrl, final String path,int threadCount) {
         this.mUrl = mUrl;
         this.mPath = getDestPath(mUrl,path);
+        mTaskCount = threadCount;
         mHandler = new MessageQueen(){
             @Override
             public boolean handleMessage(Message message) {
