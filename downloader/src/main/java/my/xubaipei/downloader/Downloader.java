@@ -40,6 +40,7 @@ public class Downloader {
         mTaskCount = threadCount;
         this.mUrl = mUrl;
         this.mPath = getDestPath(mUrl,path);
+        mTaskCount = threadCount;
         mHandler = new MessageQueen(){
             @Override
             public boolean handleMessage(Message message) {
@@ -217,7 +218,7 @@ public class Downloader {
     public class DownloadInfo{
         String url;
         String path;
-        long mOffset = 0;
+        long mOffset = 0;   
         long contentLenght = 0;
     }
     public interface CallBack{

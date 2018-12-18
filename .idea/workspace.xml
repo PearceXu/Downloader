@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8165fab-1cf5-41a8-8688-6da3c83eac2f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/AndroidDownloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloader/downloader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/downloader/downloader.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/downloader/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/downloader/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/Downloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/Downloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloader/src/test/java/my/xubaipei/downloader/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/downloader/src/test/java/my/xubaipei/downloader/ExampleUnitTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,8 +35,8 @@
       <file leaf-file-name="ExampleUnitTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/downloader/src/test/java/my/xubaipei/downloader/ExampleUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="93" lean-forward="true" selection-start-line="16" selection-start-column="93" selection-end-line="16" selection-end-column="93" />
+            <state relative-caret-position="563">
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
               <folding>
                 <element signature="e#624#625#0" expanded="true" />
                 <element signature="e#684#685#0" expanded="true" />
@@ -49,11 +47,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidDownloader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LogUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/LogUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidDownloader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/AndroidDownloader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-81">
-              <caret line="116" column="68" lean-forward="true" selection-start-line="116" selection-start-column="68" selection-end-line="116" selection-end-column="68" />
+            <state relative-caret-position="300">
+              <caret line="112" column="25" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
               <folding>
                 <element signature="e#9112#9113#0" expanded="true" />
                 <element signature="e#9162#9163#0" expanded="true" />
@@ -62,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Downloader.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Downloader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/Downloader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="27" column="16" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+            <state relative-caret-position="150">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
@@ -3388,10 +3395,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/Downloader.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/downloader/src/test/java/my/xubaipei/downloader/ExampleUnitTest.java" />
         <option value="$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/AndroidDownloader.java" />
+        <option value="$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/LogUtil.java" />
+        <option value="$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/Downloader.java" />
       </list>
     </option>
   </component>
@@ -3663,7 +3671,7 @@
       <window_info id="Build Variants" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32851636" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32851636" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="right" id="Flutter Outline" />
@@ -3713,10 +3721,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/AndroidDownloader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="112" column="25" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
+          <folding>
+            <element signature="e#9112#9113#0" expanded="true" />
+            <element signature="e#9162#9163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/downloader/src/test/java/my/xubaipei/downloader/ExampleUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="93" lean-forward="true" selection-start-line="16" selection-start-column="93" selection-end-line="16" selection-end-column="93" />
+        <state relative-caret-position="563">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
             <element signature="e#684#685#0" expanded="true" />
@@ -3726,21 +3745,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/Downloader.java">
+    <entry file="file://$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/LogUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="27" column="16" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        <state relative-caret-position="400">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/AndroidDownloader.java">
+    <entry file="file://$PROJECT_DIR$/downloader/src/main/java/my/xubaipei/downloader/Downloader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="116" column="68" lean-forward="true" selection-start-line="116" selection-start-column="68" selection-end-line="116" selection-end-column="68" />
-          <folding>
-            <element signature="e#9112#9113#0" expanded="true" />
-            <element signature="e#9162#9163#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
