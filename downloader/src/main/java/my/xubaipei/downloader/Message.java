@@ -35,7 +35,7 @@ public class Message {
         this.args = args;
     }
 
-    public static Message obtainMessage(int what,Object... args){
+    public static Message obtainMessage(int what, Object... args){
         String desc = "";
         switch (what){
             case MSG_CONNECT:

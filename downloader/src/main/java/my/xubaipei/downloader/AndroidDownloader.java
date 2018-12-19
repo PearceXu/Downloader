@@ -22,6 +22,7 @@ import static my.xubaipei.downloader.Message.MSG_TASK_PROGRESS;
 import static my.xubaipei.downloader.Message.MSG_TASK_START;
 import static my.xubaipei.downloader.Message.MSG_TASK_SUCCESS;
 
+
 /**
  * Created by xubaipei on 2018/12/17.
  */
@@ -30,7 +31,7 @@ public class AndroidDownloader implements Handler.Callback{
     String mUrl;
     String mPath;
     MessageQueen mHandler;
-    public final String TAG = "Downloader";
+    public final String TAG = "AndroidDownloader";
     CallBack mCallBack = null;
     int mTaskCount = 3;
     List<DownloadInfo> mChildFilePath;
@@ -43,7 +44,7 @@ public class AndroidDownloader implements Handler.Callback{
     public boolean handleMessage(android.os.Message message) {
         switch (message.what) {
             case MSG_TASK_PROGRESS:
-                int progress = message.arg1;
+                int progress = (int)message.obj;
                 if (mCallBack != null){
                     mCallBack.onProgress(progress);
                 }
@@ -121,9 +122,9 @@ public class AndroidDownloader implements Handler.Callback{
                         long increase = (long)message.args[0];
                         mAllTaskLenght += increase;
                         int progress = (int)(mAllTaskLenght * 100 /mContentLenght);
+                        log("MSG_TASK_PROGRESS"+"progress:"+progress);
                         mAndroidHandler.sendMessage(android.os.Message.obtain(mAndroidHandler,
                                 MSG_TASK_PROGRESS,progress));
-
                         break;
                     case MSG_TASK_START:
                         log("--MSG_TASK_START");

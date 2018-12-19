@@ -1,8 +1,8 @@
 package my.xubaipei.downloader;
 
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 import static my.xubaipei.downloader.LogUtil.log;
 
@@ -12,10 +12,10 @@ import static my.xubaipei.downloader.LogUtil.log;
  */
 
 public class MessageQueen extends Thread{
-    Queue<Message> messageQueue;
+    List<Message> messageQueue;
 
     public MessageQueen() {
-        this.messageQueue = new LinkedList<Message>();
+        this.messageQueue = new ArrayList<Message>();
     }
 
     public void sendMessage(Message message){
@@ -49,7 +49,9 @@ public class MessageQueen extends Thread{
                 }
                 continue;
             }
-            Message message = messageQueue.poll();
+//            Message message = messageQueue.poll();
+            Message message = messageQueue.get(0);
+            messageQueue.remove(message);
             pollTime++;
             if (message != null){
                 try {

@@ -20,6 +20,7 @@ import static my.xubaipei.downloader.Message.MSG_TASK_PROGRESS;
 import static my.xubaipei.downloader.Message.MSG_TASK_START;
 import static my.xubaipei.downloader.Message.MSG_TASK_SUCCESS;
 
+
 /**
  * Created by xubaipei on 2018/12/17.
  */
@@ -218,7 +219,7 @@ public class Downloader {
     public class DownloadInfo{
         String url;
         String path;
-        long mOffset = 0;   
+        long mOffset = 0;
         long contentLenght = 0;
     }
     public interface CallBack{
