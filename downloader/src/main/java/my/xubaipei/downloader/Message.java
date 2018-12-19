@@ -35,7 +35,7 @@ public class Message {
         this.args = args;
     }
 
-    public static Message obtainMessage(int what, Object... args){
+    public static my.xubaipei.downloader.Message obtainMessage(int what, Object... args){
         String desc = "";
         switch (what){
             case MSG_CONNECT:
@@ -63,6 +63,6 @@ public class Message {
                 desc = "MSG_TASK_SUCCESS";
                 break;
         }
-        return new Message(what,desc,args);
+        return new my.xubaipei.downloader.Message(what,desc,args);
     }
 }

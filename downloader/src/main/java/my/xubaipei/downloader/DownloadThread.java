@@ -49,7 +49,7 @@ public class DownloadThread extends Thread {
             URLConnection connection = connect(mUrl);
             InputStream inputStream = connection.getInputStream();
             RandomAccessFile fos = new RandomAccessFile(mDest,"rwd");
-            mOffset = inputStream.skip(mOffset);
+            mOffset = inputStream.skip(mOffset+mFileOffset);
             fos.seek(mFileOffset);
             mHandler.sendMessage(Message.obtainMessage(Message.MSG_TASK_PROGRESS,mFileOffset,mDest));
             log(Thread.currentThread().getName()+"start position:"+mOffset);
