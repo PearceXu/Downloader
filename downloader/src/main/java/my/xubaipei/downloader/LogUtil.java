@@ -7,13 +7,10 @@ import android.util.Log;
  * create date： 2018-12-18
  */
 public class LogUtil {
-    static boolean PRINT_LOG = false;
     public static void log(String message){
-        if (!PRINT_LOG){
+        if (BuildConfig.DEBUG){
             return;
         }
-        String name = Thread.currentThread().getName();
-//        System.out.println("------------name:"+name+"size:"+message);
         Log.i("AndroidDownloader",message);
     }
 }
