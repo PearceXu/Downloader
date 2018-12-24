@@ -3,7 +3,7 @@ Downloader in java 多线程下载器，支持断点下载，进度回传
 
 # 集成
     maven { url "https://jitpack.io" }
-    implementation 'com.github.PearceXu:Downloader:1.0.7'
+    implementation 'com.github.PearceXu:Downloader:1.0.9'
 # Android用法
         String dest = "/sdcard/Android/data/com.example.xubaipei/files/";
         String url = "http://10.98.0.232:9004/AppUpdate/H5File/20181211/web.zip";
