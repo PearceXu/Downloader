@@ -115,7 +115,7 @@ public class AndroidDownloader implements Handler.Callback{
                         break;
                     case MSG_TASK_ERROR:
                         mAndroidHandler.sendMessage(android.os.Message.obtain(mAndroidHandler,
-                                MSG_TASK_PROGRESS,message.args[0]));
+                                MSG_TASK_ERROR,message.args[0]));
                         break;
                     case MSG_TASK_PROGRESS:
                         log("MSG_TASK_PROGRESS");
