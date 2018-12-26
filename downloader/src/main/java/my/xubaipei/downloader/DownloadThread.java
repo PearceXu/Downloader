@@ -71,7 +71,7 @@ public class DownloadThread extends Thread {
             inputStream.close();
         }catch (Exception e){
             e.printStackTrace();
-            mHandler.sendMessage(Message.obtainMessage(Message.MSG_TASK_ERROR,e.toString()));
+            mHandler.sendMessage(Message.obtainMessage(Message.MSG_TASK_ERROR,e));
         }
     }
 

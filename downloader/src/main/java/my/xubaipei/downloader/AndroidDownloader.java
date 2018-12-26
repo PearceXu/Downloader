@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class AndroidDownloader implements Handler.Callback{
     long mAllTaskLenght = 0;
     int mChildSuccessTimes = 0;
     Handler mAndroidHandler;
+    List<DownloadThread> mThreads = null;
 
     @Override
     public boolean handleMessage(android.os.Message message) {
@@ -68,6 +70,7 @@ public class AndroidDownloader implements Handler.Callback{
     public AndroidDownloader(final String mUrl, final String path, int threadCount) {
         mAndroidHandler = new Handler(this);
         mTaskCount = threadCount;
+        mThreads = new ArrayList<>();
         this.mUrl = mUrl;
         this.mPath = getDestPath(mUrl,path);
         mHandler = new MessageQueen(){
@@ -77,7 +80,13 @@ public class AndroidDownloader implements Handler.Callback{
                     case MSG_CONNECT:
                         log("--MSG_CONNECT");
                         try {
-                            URLConnection connection = connect(mUrl);
+                            HttpURLConnection connection = connect(mUrl);
+                            int code = connection.getResponseCode();
+                            if (code != 200){
+                                connection.getInputStream().close();
+                                mHandler.sendMessage(Message.obtainMessage(MSG_TASK_ERROR,new Exception("http error code:"+code)));
+                                return true;
+                            }
                             long contentLength = connection.getContentLength();
                             if (contentLength <= 0){
                                 connection.getInputStream().close();
@@ -101,8 +110,10 @@ public class AndroidDownloader implements Handler.Callback{
                             info.url = mUrl;
                             info.path = mPath;
                         }
-                        new DownloadThread(info.url,
-                                info.path,info.mOffset,info.contentLenght,mHandler).start();
+                        DownloadThread thread = new DownloadThread(info.url,
+                                info.path,info.mOffset,info.contentLenght,mHandler);
+                        thread.start();
+                        mThreads.add(thread);
                         break;
                     case MSG_CHILD_TASK_SUCCESS:
                         mChildSuccessTimes++;
@@ -114,6 +125,13 @@ public class AndroidDownloader implements Handler.Callback{
                         }
                         break;
                     case MSG_TASK_ERROR:
+                        for (int i = 0; i < mThreads.size();i++){
+                            try {
+                                mThreads.get(i).interrupt();
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
                         mAndroidHandler.sendMessage(android.os.Message.obtain(mAndroidHandler,
                                 MSG_TASK_ERROR,message.args[0]));
                         break;
@@ -234,10 +252,9 @@ public class AndroidDownloader implements Handler.Callback{
         name = list[list.length - 1];
         return name;
     }
-    private static URLConnection connect(String url)throws IOException {
+    private static HttpURLConnection connect(String url)throws IOException {
         URL localURL = new URL(url);
-        URLConnection connection = localURL.openConnection();
-        connection.connect();
+        HttpURLConnection connection = (HttpURLConnection)localURL.openConnection();
         return connection;
     }
 
