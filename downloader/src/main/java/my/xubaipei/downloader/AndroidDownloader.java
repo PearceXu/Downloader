@@ -17,6 +17,7 @@ import static my.xubaipei.downloader.LogUtil.log;
 import static my.xubaipei.downloader.Message.MSG_CHILD_TASK_SUCCESS;
 import static my.xubaipei.downloader.Message.MSG_CONNECT;
 import static my.xubaipei.downloader.Message.MSG_DONWLOAD;
+import static my.xubaipei.downloader.Message.MSG_TASK_CANCEL;
 import static my.xubaipei.downloader.Message.MSG_TASK_ERROR;
 import static my.xubaipei.downloader.Message.MSG_TASK_MERGE_FILE;
 import static my.xubaipei.downloader.Message.MSG_TASK_PROGRESS;
@@ -228,8 +229,21 @@ public class AndroidDownloader implements Handler.Callback{
 
     public void download(CallBack callBack){
         mCallBack = callBack;
-        mHandler.loop();
         mHandler.sendMessage(Message.obtainMessage(MSG_CONNECT));
+    }
+
+    public void stop(){
+        if (mThreads == null){
+            return;
+        }
+        for (int i = 0; i < mThreads.size();i++){
+            try {
+                mThreads.get(i).interrupt();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        mThreads.clear();
     }
 
     private static String getDestPath(String url,String dest){

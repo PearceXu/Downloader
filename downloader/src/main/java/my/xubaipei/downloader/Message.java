@@ -12,7 +12,8 @@ public class Message {
     public static final int MSG_TASK_PROGRESS = 0x05;
     public static final int MSG_TASK_START = 0x06;
     public static final int MSG_TASK_MERGE_FILE = 0x07;
-    public static final int MSG_TASK_SUCCESS= 0x08;
+    public static final int MSG_TASK_SUCCESS = 0x08;
+    public static final int MSG_TASK_CANCEL = 0x08;
 
 
 
