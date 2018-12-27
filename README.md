@@ -23,6 +23,7 @@ Downloader in java 多线程下载器，支持断点下载，进度回传
             }
         });
 # java用法
+```java
 String dest = "C:\\Users\\xubp\\Desktop\\video";
 String url = "http://10.98.0.232:9004/AppUpdate/H5File/20181211/web.zip";
 Downloader downloader = new Downloader(url,dest,1);
@@ -43,4 +44,5 @@ Downloader downloader = new Downloader(url,dest,1);
          System.out.println(path);
      }
  });
+ ```
 
